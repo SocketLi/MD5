@@ -32,6 +32,7 @@ int TestApplication(int argc,char **argv)
         }
         cout<<"MD5(\""<<TestString<<"\")="<<Md5Digest<<endl;
     });
+    delete MD5Model;
     return SUCCESS;
 }
 int GenFileDigest(int argc,char **argv)
@@ -47,6 +48,7 @@ int GenFileDigest(int argc,char **argv)
         return FAILURE;
     }
     cout<<"The MD5 value of file(\""<<argv[2]<<"\") is:"<<FileDigest<<endl;
+    delete MD5Model;
     return SUCCESS;
 }
 int TestFileByUserInput(int argc,char **argv)
@@ -72,6 +74,7 @@ int TestFileByUserInput(int argc,char **argv)
     else{
         cout<<"OK! The file is integrated "<<endl;
     }
+    delete MD5Model;
     return SUCCESS;
 }
 int TestFileByMd5File(int argc,char **argv)
@@ -107,6 +110,8 @@ int TestFileByMd5File(int argc,char **argv)
     else{
         cout<<"Match Error! The file has been modified!"<<endl;
     }
+    delete MD5Model;
+    delete []Md5DigestInFile;
     return SUCCESS;
 }
 int main(int argc,char **argv)
